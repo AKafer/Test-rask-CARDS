@@ -1,0 +1,51 @@
+td.redcode {
+  font-weight: bold;
+  background-color: rgb(255, 86, 86);
+}
+td.orangecode {
+  font-weight: bold;
+  background-color: rgb(255, 209, 124);
+}
+td.greencode {
+  font-weight: bold;
+  background-color: rgb(142, 235, 3);
+}
+
+.pulse {
+  border-radius: 5px;
+  background: #cca92c;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}

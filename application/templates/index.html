@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <!-- Кодировка сайта -->
+    <!-- Сайт готов работать с мобильными устройствами -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Загружаем фав-иконки -->
+    <link rel="icon" href={% static "img/fav/favicon.ico" %} type="image"> <link
+    rel="apple-touch-icon" sizes="180x180" href={% static
+    "img/fav/apple-touch-icon.png" %}> <link rel="icon" type="image/png"
+    sizes="32x32" href={% static "img/fav/favicon-32x32.png" %}> <link
+    rel="icon" type="image/png" sizes="16x16" href={% static
+    "img/fav/favicon-16x16.png" %}> <link rel="manifest" href={% static
+    "img/fav/site.webmanifest" %}>
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Подключен файл со стандартными стилями бустрап -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Название вкладки -->
+    <title>ManageCards</title>
+    <script src="{% static 'jquery-3.5.1.js' %}"></script>
+    <script src="{% static '1.12.1/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static '1.12.1/js/dataTables.bootstrap5.min.js' %}"></script>
+    <link
+      href="{% static '1.12.1/css/dataTables.bootstrap5.min.css' %}"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <!--  Стиль для вывода подсветок к материалам -->
+    <link
+      href="{% static 'css/backgrounds_dtable.css' %}"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    {% csrf_token %}
+    <script>
+      window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+  </head>
+  <body>
+    {% comment %} {% for task in tasks %}
+    <p>{{ task.title }}</p>
+    {% endfor %} {% endcomment %}
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Управление картами</h4>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" id="EditTaskButton">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-primary" id="StatButton">
+            Статистика
+          </button>
+          <button type="button" class="btn btn-primary" id="DeleteTaskButton">
+            Удалить
+          </button>
+          <p></p>
+        </div>
+
+        <div class="modal-body">
+          <table
+            class="table table-bordered table-responsive table-striped table-hover"
+            id="SP_Table"
+            style="width: 100%"
+          >
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Серия</th>
+                <th scope="col">Номер</th>
+                <th scope="col">Дата выпуска</th>
+                <th scope="col">Дата истечения</th>
+                <th scope="col">Лимит</th>
+                <th scope="col">Статус</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </body>
+
+  <script src="{% static 'js/index.js' %}"></script>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="CreatEditTaskModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit-create-norm-title"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Закрыть"
+            id="CeateTaskClose1"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div id="name_done">
+            <div class="input-group input-group-sm mb-3">
+              <label class="input-group-text">Статус: </label>
+              <select
+                class="form-select"
+                name="inspection_result"
+                id="select_status"
+                required
+              ></select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="CreateTaskOkButton"
+          ></button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            id="CeateTaskClose2"
+          >
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="StatTaskModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit-create-norm-title"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Закрыть"
+            id="StatTaskClose1"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <table class="table" id="list_trans">
+            <thead>
+              <tr>
+                <th scope="col">Дата</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Сумма</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            id="StatTaskClose2"
+          >
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
