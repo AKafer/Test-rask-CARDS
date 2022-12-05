@@ -50,14 +50,14 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-### Выполнить миграции и загрузить тестовые данные в БД:
+### Выполнить миграции:
 
 ```
 cd application
 python manage.py migrate
 ```
 
-### Переопределеить константы в файле cards_gen.py и выпустить необходимое число карт:
+### Переопределеить при необходимости константы в файле cards_gen.py и выпустить необходимое число карт:
 
 ```
 python manage.py cards_gen
